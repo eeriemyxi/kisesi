@@ -1,6 +1,6 @@
 [project]
 name = "kisesi"
-version = "0.1.0"
+version = "0.1.1"
 description = "Light wrapper around Python `logging` built-in module."
 readme = "README.md"
 authors = [

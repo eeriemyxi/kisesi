@@ -71,13 +71,13 @@ class Logger(Logger):
         return self.setLevel(level)
 
     def is_enabled_for(self, level):
-        return self.is_enabled_for(level)
+        return self.isEnabledFor(level)
 
     def get_child(self, suffix):
         return self.getChild(suffix)
 
     def get_children(self):
-        return self.get_children()
+        return self.getChildren()
 
     def add_filter(self, filter):
         return self.addFilter(filter)

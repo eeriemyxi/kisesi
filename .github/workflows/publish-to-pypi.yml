@@ -12,5 +12,9 @@ jobs:
     permissions:
       id-token: write
     steps:
+    - name: Build Package
+      run: |
+        pip install uv
+        uv build
     - name: Publish package distributions to PyPI
       uses: pypa/gh-action-pypi-publish@release/v1

@@ -49,16 +49,12 @@ class ColoredFormatter(Formatter):
         CRITICAL: f"{Color.BG_RED}{Color.BRIGHT_WHITE}",
     }
     LEVEL_NAMES = {
-        DEBUG: "DEBUG",
-        INFO: "INFO",
         WARNING: "WARN",
-        ERROR: "ERROR",
-        CRITICAL: "CRITICAL",
     }
 
     def format(self, record):
         level_color = self.LEVEL_COLORS.get(record.levelno, "")
-        level_name = self.LEVEL_NAMES[record.levelno]
+        level_name = self.LEVEL_NAMES.get(record.levelno, record.levelname)
         record.levelname = f"{level_color}[{level_name}]{Color.RESET}"
         return super().format(record)
 

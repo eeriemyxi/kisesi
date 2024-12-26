@@ -29,7 +29,7 @@ class Color:
     BRIGHT_MAGENTA = "\033[95m"
     BRIGHT_CYAN = "\033[96m"
     BRIGHT_WHITE = "\033[97m"
-    
+
     BG_BLACK = "\033[40m"
     BG_RED = "\033[41m"
     BG_GREEN = "\033[42m"
@@ -65,7 +65,7 @@ def _get_default_kisesi_handler(fmt, datefmt):
     return handler
 
 
-def monkeypatch_logger(logger):
+def _monkeypatch_logger(logger):
     if not logger:
         return None
 
@@ -79,10 +79,10 @@ def monkeypatch_logger(logger):
 
     logger.set_level = logger.setLevel
     logger.is_enabled_for = logger.isEnabledFor
-    logger.get_child = lambda *args, **kwargs: monkeypatch_logger(
+    logger.get_child = lambda *args, **kwargs: _monkeypatch_logger(
         logger.getChild(*args, **kwargs)
     )
-    logger.get_children = lambda *args, **kwargs: monkeypatch_logger(
+    logger.get_children = lambda *args, **kwargs: _monkeypatch_logger(
         logger.getChildren(*args, **kwargs)
     )
     logger.add_filter = logger.addFilter
@@ -91,7 +91,7 @@ def monkeypatch_logger(logger):
     logger.make_record = logger.makeRecord
     logger.has_handlers = logger.hasHandlers
 
-    logger.parent = monkeypatch_logger(logger.parent)
+    logger.parent = _monkeypatch_logger(logger.parent)
 
     logger.__KISESI__ = True
 
@@ -99,7 +99,7 @@ def monkeypatch_logger(logger):
 
 
 def get_logger(name=None):
-    return monkeypatch_logger(getLogger(name))
+    return _monkeypatch_logger(getLogger(name))
 
 
 def basic_config(*, incdate=False, use12h=True, **kwargs):

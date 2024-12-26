@@ -1,5 +1,7 @@
 # Kisesi
-Kisesi is a light wrapper around the built-in `logging` module of Python standard library. This module is written in a hacky way and thus is meant for personal use.
+Kisesi is a light wrapper around the built-in `logging` module of Python
+standard library. This module is written in a hacky way and thus is meant for
+personal use.
 
 # Demos
 ```python
@@ -29,7 +31,9 @@ if __name__ == "__main__":
 ![Demo Image](https://files.catbox.moe/o9vvpw.png)
 
 # Guide
-You are expected to read the source code to figure out all the features.
+You are expected to read the [source
+code](https://github.com/eeriemyxi/kisesi/blob/main/src/kisesi/__init__.py) to
+figure out all the features.
 
 # Installation
 Pypi

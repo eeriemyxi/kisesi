@@ -26,14 +26,7 @@ if __name__ == "__main__":
 ![Demo Image](https://files.catbox.moe/wmmvsx.png)
 
 ### Normal
-```
-[12/25/24 09:28:35 PM] [DEBUG] @ __main__.py:8 main :: This is a "debug" message.
-[12/25/24 09:28:35 PM] [INFO] @ __main__.py:9 main :: This is a "info" message.
-[12/25/24 09:28:35 PM] [WARN] @ __main__.py:10 main :: This is a "warning" message.
-[12/25/24 09:28:35 PM] [ERROR] @ __main__.py:11 main :: This is a "error" message.
-[12/25/24 09:28:35 PM] [CRITICAL] @ __main__.py:12 main :: This is a "critical" message.
-```
-(You'll get colored level names in normal fonts as well)
+![Demo Image](https://files.catbox.moe/o9vvpw.png)
 
 # Guide
 You are expected to read the source code to figure out all the features.
@@ -46,3 +39,4 @@ user:~$ pip install kisesi
 Git
 ```shell
 user:~$ pip install git+https://github.com/eeriemyxi/kisesi
+```

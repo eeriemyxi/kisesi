@@ -91,7 +91,17 @@ def _monkeypatch_logger(logger):
     logger.make_record = logger.makeRecord
     logger.has_handlers = logger.hasHandlers
 
-    logger.parent = _monkeypatch_logger(logger.parent)
+    logger.__class__ = type(
+        logger.__class__.__name__,
+        (logger.__class__,),
+        dict(
+            __getattribute__=lambda self, name: (
+                object.__getattribute__(self, name)
+                if name != "parent"
+                else _monkeypatch_logger(object.__getattribute__(self, "parent"))
+            )
+        ),
+    )
 
     logger.__KISESI__ = True
 

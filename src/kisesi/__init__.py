@@ -91,6 +91,8 @@ def _monkeypatch_logger(logger):
     logger.make_record = logger.makeRecord
     logger.has_handlers = logger.hasHandlers
 
+    # We abuse getattribute dunder method to lazily 
+    # monkeypatch parent logger only when necessary
     logger.__class__ = type(
         logger.__class__.__name__,
         (logger.__class__,),

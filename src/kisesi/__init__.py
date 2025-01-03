@@ -90,6 +90,7 @@ def _monkeypatch_logger(logger):
     logger.find_caller = logger.findCaller
     logger.make_record = logger.makeRecord
     logger.has_handlers = logger.hasHandlers
+    logger.add_handler = logger.addHandler
 
     # We abuse getattribute dunder method to lazily 
     # monkeypatch parent logger only when necessary

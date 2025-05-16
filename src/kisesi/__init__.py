@@ -88,9 +88,7 @@ def _monkeypatch_logger(logger: t.Any) -> LoggerLike | None:
     logger.get_child = lambda *args, **kwargs: _monkeypatch_logger( # type: ignore
         logger.getChild(*args, **kwargs)
     )
-    logger.get_children = lambda *args, **kwargs: _monkeypatch_logger( # type: ignore
-        logger.getChildren(*args, **kwargs)
-    )
+    logger.get_children = lambda *args, **kwargs: set(_monkeypatch_logger(child) for child in logger.getChildren(*args, **kwargs))
     logger.add_filter = logger.addFilter
     logger.remove_filter = logger.removeFilter
     logger.find_caller = logger.findCaller

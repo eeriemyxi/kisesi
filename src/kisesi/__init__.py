@@ -70,10 +70,7 @@ def _get_default_kisesi_handler(fmt: t.Any, datefmt: t.Any):
     return handler
 
 
-def _monkeypatch_logger(logger: t.Any) -> LoggerLike | None:
-    if not logger:
-        return None
-
+def _monkeypatch_logger(logger: t.Any) -> LoggerLike:
     # somewhere down the line in recursion, it returns a `logging.RootLogger`,
     # we handle that case here by not patching a `logging.RootLogger`
     if not isinstance(logger, Logger): # type: ignore

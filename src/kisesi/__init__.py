@@ -82,7 +82,7 @@ def _monkeypatch_logger(logger: t.Any) -> LoggerLike | None:
     if getattr(logger, "__KISESI__", False):
         return logger # type: ignore
 
-    logger = t.cast(Logger, t.Any)
+    logger = t.cast(LoggerLike, logger)
     logger.set_level = logger.setLevel
     logger.is_enabled_for = logger.isEnabledFor
     logger.get_child = lambda *args, **kwargs: _monkeypatch_logger( # type: ignore
